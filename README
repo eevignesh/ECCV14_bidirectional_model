@@ -22,7 +22,7 @@ The different arguments are explained in the file.
 Saved results:
 -----------
 1. While running "runCorefFaceOpt.m", results are saved to the directory "$DATA_DIR/$EPISODE_NAME/bidirectional_reulsts/"
-2. The face recognition results are saved at each iteration  in the files faces_Y*, and similarly
-coref results are stored for each iteration in the file faces_Z*.
-3. The coref results are stored in a matrix Z_whole \in [0,1]^{number_of_cast_names X number_of_mentions}.
-4. The face results are stored in a matrix Y_whole \in [0,1]^{number_of_cast_names X number_of_faces}.
+2. The face recognition results are saved at each iteration  in the files faces_Y.*, and similarly
+coref results are stored for each iteration in the file faces_Z.*.
+3. The coref results are stored in a matrix Z_whole as a matrix [0,1]^{number_of_cast_names X number_of_mentions}.
+4. The face results are stored in a matrix Y_whole as a matirx [0,1]^{number_of_cast_names X number_of_faces}.
