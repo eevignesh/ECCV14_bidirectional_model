@@ -8,19 +8,19 @@ along with a mosek license (academic license is free: http://license.mosek.com/a
 Then set the corresponding directory and license paths in optimizerSetup.m.
 
 Data:
-----
+-----
 Download the data (http://vision.stanford.edu/vigneshr_release_data/eccv14_episode_data.zip)
 and unpack it in a directory $DATA_DIR.
 
 Running the code:
-------------------
+-----------------
 1. The bidriectional optimization can be run by running "runCorefFaceOpt".
 The different arguments are explained in the file.
 
 2. Results can be generated for the provided dataset by running main($DATA_DIR). 
 
 Saved results:
------------
+--------------
 1. While running "runCorefFaceOpt.m", results are saved to the directory "$DATA_DIR/$EPISODE_NAME/bidirectional_reulsts/"
 2. The face recognition results are saved at each iteration  in the files faces_Y.*, and similarly
 coref results are stored for each iteration in the file faces_Z.*.
