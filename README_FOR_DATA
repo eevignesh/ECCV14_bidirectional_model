@@ -1,0 +1,36 @@
+face_annotations.mat
+---------------------
+annoids: Each face in the video is associated with a ground-truth cast name. The cast name is represented as an index into the unique_names cell matrix part of train_data_info in bidirectional_data.mat. annoids(i) is the cast-name index associated with i^{th} face.
+
+bidirectional_data.mat
+----------------------
+train_data_info (This is just a pre-processing of the data from script and video):
+- all_fids: the face-ids which are all evaluated upon (typically all faces in the episode are annotated, so this should be 1:num_faces)
+
+- track_to_bag_speaker: we provide a bag of speakers, where each bag corresponds to a set dialogues-speakers who are identified by weak alignment of srt with the video. This field provides the face-tracks which are associated with the bag.
+
+- cast_to_bag_speaker: the cast names which are associated with each speaker bag mentioned in the previous field.
+
+- track_to_bag_actor: we also have a bag of actors similar to speakers. The distinction here is that the acotrs are obtained from the script and refers to people who perform some kind of action. Each bag is associated with a set of such actors. This field gives the set of face tracks which are associated with this bag of actors.
+
+- cast_to_bag_actor: this gives the set of cast-names which are associated with each bag of actors.
+
+- track_to_bag_scene: we also provide the bag of scenes in each episode. This field gives the set of tracks associated with each scene bag.
+
+- cast_to_bag_scene: the set of cast-names associated with each scene bag
+
+- Kernel_face: Face similarity kernel generated from sift like features extracted from face tracks
+
+- unique_names: the set of unique names in each episode. Note that cast_to_bag_actor, cast_to_bag_scene, cast_to_bag_speaker index into this cell aray.
+
+- A_face, A_ment, M: Since the alignment of script with video is not perfect. Some face tracks are not associated with any segment of the script, and similarly some mentions are not associated with any segment of the video. A_face tell you the subset of faces which are actually aligned with some part of the video, where each row corresponds to a face which was weakly aligned with the script using srt based alignment. Simlarly, A_ment tells you which of the mentions are associated with atleast one part of the video. M is a matrix which tells you which rows of A_face are associated with which rows of A_ment based on the weak srt based alignment.
+
+-Ya_faceids, Za_mentids :Ya_faceid and Za_mentids are deprecated fields not used by model. 
+
+-z_strict: The mentions which have are proper nouns. z_strict(i) is the unique-name index correpsonding to that mention if z_strict(i) > 0.
+
+
+
+coref_data:
+- unary_unique: the set of unique mentions in the script, where unary_unique(i) is the mention-id. Mention id is available in the mentions field.
+- mentions: The set of mentions from our script data. mentionid is unique-id of the mention.
