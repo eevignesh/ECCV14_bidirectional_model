@@ -23,14 +23,19 @@ train_data_info (This is just a pre-processing of the data from script and video
 
 - unique_names: the set of unique names in each episode. Note that cast_to_bag_actor, cast_to_bag_scene, cast_to_bag_speaker index into this cell aray.
 
-- A_face, A_ment, M: Since the alignment of script with video is not perfect. Some face tracks are not associated with any segment of the script, and similarly some mentions are not associated with any segment of the video. A_face tell you the subset of faces which are actually aligned with some part of the video, where each row corresponds to a face which was weakly aligned with the script using srt based alignment. Simlarly, A_ment tells you which of the mentions are associated with atleast one part of the video. M is a matrix which tells you which rows of A_face are associated with which rows of A_ment based on the weak srt based alignment.
+- A_face, A_ment: Since the alignment of script with video is not perfect. Some face tracks are not associated with any segment of the script, and similarly some mentions are not associated with any segment of the video. A_face tell you the subset of faces which are actually aligned with some part of the video, where each row corresponds to a face which was weakly aligned with the script using srt based alignment. Simlarly, A_ment tells you which of the mentions are associated with atleast one part of the video. The columns of A_ment correspond to a unique mention, which is indentified by unary_unique in coref_data.
 
--Ya_faceids, Za_mentids :Ya_faceid and Za_mentids are deprecated fields not used by model. 
+-Ya_faceids, Za_mentids :Ya_faceid and Za_mentids are deprecated fields not used. 
 
 -z_strict: The mentions which have are proper nouns. z_strict(i) is the unique-name index correpsonding to that mention if z_strict(i) > 0.
 
 
 
 coref_data:
-- unary_unique: the set of unique mentions in the script, where unary_unique(i) is the mention-id. Mention id is available in the mentions field.
+- unary_unique: the set of unique mentions in the script, where unary_unique(i) is the mentionid. Mentionid is available in the mentions field.
+
 - mentions: The set of mentions from our script data. mentionid is unique-id of the mention.
+
+- pair_features, pair_ids: coreference features extracted between pairs of mentions in the text. Each cell corresponds to a mention. For instance, pair_features{1} gives you the features which were extracted between mention "1" and other mentions in the text. The set of mention-ids corresponding to these pairwise features are provided in pair_ids{1}. So pair_features{1}(1,:) is the feature vector between mention-1, pair_ids{1}(1).
+
+NOTE: Remaining fields are typically pre-processings of the mention features.
